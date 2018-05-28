@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width:300px;background:#16191C;">
+			<div id="sx" style="width:300px;height:500px;"></div>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="echarts.min.js" ></script>
+	<script type="text/javascript" src="shanxi1.js" ></script>
+	<script>
+		var myChart = echarts.init(document.getElementById('sx'));
+		var option = {
+		  	tooltip : {
+		   		trigger: 'item',
+		   		formatter: function(a){
+		    		return a[2];
+		   		},
+		  	},
+		  	dataRange: {
+		  		show:false,//左侧范围消失
+		   		color:['#0b3768'],
+		   		calculable : false // 选择模式，默认开启图例开关
+		  	},
+		  	series : [
+		   		{
+		    		type: 'map',
+		    		mapType: '陕西',
+		    		selectedMode : 'single',
+				    itemStyle:{ // 默认状态下地图的文字  
+				     	normal:{
+				     		label:{
+				     			show:false,
+				     		},
+				     		borderColor:'#50a8ce',//省份的边框颜色
+				     		color:'#0b3768',//地图背景颜色
+							//areaStyle:{color:'#0b3768'}//设置地图颜色
+				     	},
+				     	emphasis:{// 鼠标放到地图上面显示文字  
+				     		label:{
+				     			show:false
+				     		},
+				     		areaColor: '#fff',//鼠标移上去的颜色
+				     	}
+				    },
+			    	data:[
+			    		{name: '西安市',value: Math.round(Math.random()*1000)},//108.948024, 34.263161
+			      		{name: '铜川市',value: Math.round(Math.random()*1000)},//108.979608, 34.916582
+			      		{name: '宝鸡市',value: Math.round(Math.random()*1000)},//107.14487, 34.369315
+			      		{name: '咸阳市',value: Math.round(Math.random()*1000)},//108.705117, 34.333439
+			      		{name: '渭南市',value: Math.round(Math.random()*1000)},//109.502882, 34.499381
+			      		{name: '延安市',value: Math.round(Math.random()*1000)},//109.49081, 36.596537
+			      		{name: '汉中市',value: Math.round(Math.random()*1000)},//107.028621, 33.077668
+			      		{name: '榆林市',value: Math.round(Math.random()*1000),selected:true},//109.741193, 38.290162
+			      		{name: '安康市',value: Math.round(Math.random()*1000)},//109.029273, 32.6903
+			      		{name: '商洛市',value: Math.round(Math.random()*1000)},//109.939776, 33.868319
+			    	]
+		   		}
+		  	]
+		};
+		myChart.setOption(option);    
+	</script>
+</html>
